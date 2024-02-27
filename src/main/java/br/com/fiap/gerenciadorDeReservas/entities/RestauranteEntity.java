@@ -73,15 +73,15 @@ public class RestauranteEntity {
         return cnpj;
     }
 
-    public List<Telefone> getTelefones() {
+    public List<TelefoneEntity> getTelefones() {
         return telefones;
     }
 
-    public List<FormasDePagamento> getFormasDePagamento() {
+    public List<FormasDePagamentoEnum> getFormasDePagamento() {
         return formasDePagamento;
     }
 
-    public TipoCulinaria getTipoCulinaria() {
+    public TipoCulinariaEnum getTipoCulinaria() {
         return tipoCulinaria;
     }
 
@@ -105,15 +105,15 @@ public class RestauranteEntity {
         return dataInoperante;
     }
 
-    public Avaliacao getAvaliacoes() {
+    public AvaliacaoEntity getAvaliacoes() {
         return avaliacoes;
     }
 
-    public List<Menu> getMenu() {
+    public List<MenuEntity> getMenu() {
         return menu;
     }
 
-    public List<Mesa> getMesas() {
+    public List<MesaEntity> getMesas() {
         return mesas;
     }
 
@@ -121,7 +121,7 @@ public class RestauranteEntity {
         return toleranciaDeAtraso;
     }
 
-    public Login getLogin() {
+    public LoginEntity getLogin() {
         return login;
     }
 }
