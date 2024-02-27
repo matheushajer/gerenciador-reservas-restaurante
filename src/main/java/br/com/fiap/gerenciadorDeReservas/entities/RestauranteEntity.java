@@ -4,7 +4,6 @@ import br.com.fiap.gerenciadorDeReservas.entities.enuns.FormasDePagamentoEnum;
 import br.com.fiap.gerenciadorDeReservas.entities.enuns.TipoCulinariaEnum;
 import jakarta.persistence.*;
 
-import java.awt.*;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -12,12 +11,15 @@ import java.util.List;
 @Table(name = "tb_restaurante")
 public class RestauranteEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nome;
     private String descricao;
-    @OneToOne(mappedBy = "restaurante", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private EnderecoEntity enderecoEntity;
     private String cnpj;
+    @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<TelefoneEntity> telefones;
     private List<FormasDePagamentoEnum> formasDePagamento;
     private TipoCulinariaEnum tipoCulinaria;
@@ -26,14 +28,14 @@ public class RestauranteEntity {
     private LocalDate horarioDeFechamento;
     private List<LocalDate> diasDeOperacao;
     private LocalDate dataInoperante;
-    @OneToMany(mappedBy = "restaurante", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private AvaliacaoEntity avaliacoes;
-    @OneToOne(mappedBy = "restaurante", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<MenuEntity> menu;
-    @OneToMany(mappedBy = "restaurante", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<AvaliacaoEntity> avaliacoes;
+    @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ItensMenuEntity> menu;
+    @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<MesaEntity> mesas;
     private Double toleranciaDeAtraso;
-    @OneToOne(mappedBy = "restaurante", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private LoginEntity login;
 
 
@@ -105,11 +107,11 @@ public class RestauranteEntity {
         return dataInoperante;
     }
 
-    public AvaliacaoEntity getAvaliacoes() {
+    public List<AvaliacaoEntity> getAvaliacoes() {
         return avaliacoes;
     }
 
-    public List<MenuEntity> getMenu() {
+    public List<ItensMenuEntity> getMenu() {
         return menu;
     }
 

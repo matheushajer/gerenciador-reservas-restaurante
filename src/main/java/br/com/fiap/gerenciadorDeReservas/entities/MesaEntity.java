@@ -1,15 +1,14 @@
 package br.com.fiap.gerenciadorDeReservas.entities;
 
 import br.com.fiap.gerenciadorDeReservas.entities.enuns.TipoDeMesaEnum;
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "tb_mesa")
 public class MesaEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Integer numeroMesa;
     private String posicaoDaMesa;

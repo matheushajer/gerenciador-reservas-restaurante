@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "tb_login")
 public class LoginEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String usuario;
     private String senha;

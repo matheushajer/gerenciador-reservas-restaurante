@@ -6,24 +6,26 @@ import java.util.List;
 
 @Entity
 @Table(name = "tb_menu")
-public class MenuEntity {
+public class ItensMenuEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nomePrato;
     private Double preco;
     private String fotoUrl;
     private List<String> ingredientes;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "restaurante_id")
     private RestauranteEntity restauranteEntity;
 
     // Construtores
 
-    public MenuEntity() {
+    public ItensMenuEntity() {
     }
 
-    public MenuEntity(Long id, String nomePrato, Double preco, String fotoUrl, List<String> ingredientes, RestauranteEntity restauranteEntity) {
+    public ItensMenuEntity(Long id, String nomePrato, Double preco, String fotoUrl, List<String> ingredientes, RestauranteEntity restauranteEntity) {
         this.id = id;
         this.nomePrato = nomePrato;
         this.preco = preco;

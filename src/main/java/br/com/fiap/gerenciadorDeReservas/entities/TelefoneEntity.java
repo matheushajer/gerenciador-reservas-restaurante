@@ -6,6 +6,8 @@ import jakarta.persistence.*;
 @Table(name = "tb_telefone")
 public class TelefoneEntity {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private int ddi;
     private int ddd;
