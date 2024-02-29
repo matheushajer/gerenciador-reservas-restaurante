@@ -18,7 +18,9 @@ public class TelefoneEntity {
     @JoinColumn(name = "restaurante_id")
     private RestauranteEntity restauranteEntity;
 
+    // **************
     // Construtores
+    // **************
 
     public TelefoneEntity() {
     }
@@ -33,7 +35,9 @@ public class TelefoneEntity {
         this.restauranteEntity = restauranteEntity;
     }
 
-    // Getters e Setters
+    // *****************
+    //  Getter e Setter
+    // *****************
 
     public Long getId() {
         return id;

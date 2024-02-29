@@ -21,7 +21,9 @@ public class EnderecoEntity {
     @JoinColumn(name = "restaurante_id")
     private RestauranteEntity restauranteEntity;
 
+    // **************
     // Construtores
+    // **************
 
     public EnderecoEntity() {
     }
@@ -48,7 +50,9 @@ public class EnderecoEntity {
         this.restauranteEntity = restauranteEntity;
     }
 
-    // Getters e Setters
+    // *****************
+    //  Getter e Setter
+    // *****************
 
     public Long getId() {
         return id;

@@ -20,7 +20,9 @@ public class AvaliacaoEntity {
     @JoinColumn(name = "restaurante_id")
     private RestauranteEntity restauranteEntity;
 
+    // **************
     // Construtores
+    // **************
 
     public AvaliacaoEntity() {
     }
@@ -35,7 +37,9 @@ public class AvaliacaoEntity {
         this.restauranteEntity = restauranteEntity;
     }
 
-    // Getter e Setters
+    // *****************
+    //  Getter e Setter
+    // *****************
 
     public Long getId() {
         return id;
