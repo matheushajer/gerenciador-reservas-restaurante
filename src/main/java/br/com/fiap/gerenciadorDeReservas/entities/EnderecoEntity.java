@@ -2,6 +2,9 @@ package br.com.fiap.gerenciadorDeReservas.entities;
 
 import jakarta.persistence.*;
 
+/**
+ * Classe para representar a Entidade Endereco
+ */
 @Entity
 @Table(name = "tb_endereco")
 public class EnderecoEntity {
@@ -29,7 +32,6 @@ public class EnderecoEntity {
     }
 
     public EnderecoEntity(
-            Long id,
             String cep,
             String logradouro,
             String numero,
@@ -39,7 +41,6 @@ public class EnderecoEntity {
             String uf,
             RestauranteEntity restauranteEntity) {
 
-        this.id = id;
         this.cep = cep;
         this.logradouro = logradouro;
         this.numero = numero;

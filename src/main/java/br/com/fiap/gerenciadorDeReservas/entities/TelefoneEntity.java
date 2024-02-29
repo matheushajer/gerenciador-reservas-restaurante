@@ -2,6 +2,9 @@ package br.com.fiap.gerenciadorDeReservas.entities;
 
 import jakarta.persistence.*;
 
+/**
+ * Classe para representar a Entidade Telefone
+ */
 @Entity
 @Table(name = "tb_telefone")
 public class TelefoneEntity {

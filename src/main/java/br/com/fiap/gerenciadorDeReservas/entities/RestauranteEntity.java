@@ -4,8 +4,12 @@ import br.com.fiap.gerenciadorDeReservas.entities.enuns.TipoCulinariaEnum;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.List;
 
+/**
+ * Classe para representar a Entidade Restaurante
+ */
 @Entity
 @Table(name = "tb_restaurante")
 public class RestauranteEntity {
@@ -16,14 +20,12 @@ public class RestauranteEntity {
     private String nome;
     @OneToOne(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private EnderecoEntity enderecoEntity;
-    @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private List<TelefoneEntity> telefones;
+    @Enumerated(EnumType.STRING)
     private TipoCulinariaEnum tipoCulinaria;
     private Integer capacidade;
-    private LocalDate horarioDeFuncionamento;
-    private LocalDate horarioDeFechamento;
+    private LocalTime horarioDeAbertura;
+    private LocalTime horarioDeFechamento;
     private List<LocalDate> diasDeOperacao;
-    private LocalDate dataInoperante;
     @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<AvaliacaoEntity> avaliacoes;
 
@@ -34,13 +36,13 @@ public class RestauranteEntity {
     public RestauranteEntity() {
     }
 
-    public RestauranteEntity(String nome, EnderecoEntity enderecoEntity, TipoCulinariaEnum tipoCulinaria,
-                             LocalDate horarioDeFuncionamento, LocalDate horarioDeFechamento) {
+    public RestauranteEntity(String nome, TipoCulinariaEnum tipoCulinaria,
+                             LocalTime horarioDeAbertura, LocalTime horarioDeFechamento, Integer capacidade) {
         this.nome = nome;
-        this.enderecoEntity = enderecoEntity;
         this.tipoCulinaria = tipoCulinaria;
-        this.horarioDeFuncionamento = horarioDeFuncionamento;
+        this.horarioDeAbertura = horarioDeAbertura;
         this.horarioDeFechamento = horarioDeFechamento;
+        this.capacidade = capacidade;
 
     }
 
@@ -60,8 +62,8 @@ public class RestauranteEntity {
         return enderecoEntity;
     }
 
-    public List<TelefoneEntity> getTelefones() {
-        return telefones;
+    public void setEnderecoEntity(EnderecoEntity enderecoEntity) {
+        this.enderecoEntity = enderecoEntity;
     }
 
     public TipoCulinariaEnum getTipoCulinaria() {
@@ -72,20 +74,16 @@ public class RestauranteEntity {
         return capacidade;
     }
 
-    public LocalDate getHorarioDeFuncionamento() {
-        return horarioDeFuncionamento;
+    public LocalTime getHorarioDeAbertura() {
+        return horarioDeAbertura;
     }
 
-    public LocalDate getHorarioDeFechamento() {
+    public LocalTime getHorarioDeFechamento() {
         return horarioDeFechamento;
     }
 
     public List<LocalDate> getDiasDeOperacao() {
         return diasDeOperacao;
-    }
-
-    public LocalDate getDataInoperante() {
-        return dataInoperante;
     }
 
     public List<AvaliacaoEntity> getAvaliacoes() {

@@ -1,7 +1,14 @@
 package br.com.fiap.gerenciadorDeReservas.entities.enuns;
 
 public enum TipoCulinariaEnum {
-
-    BRASILEIRA, ITALIANA, JAPONESA;
+    JAPONESA,
+    CHINESA,
+    ITALIANA,
+    BRASILEIRA,
+    MEXICANA,
+    TAILANDESA,
+    PORTUGUESA,
+    FRANCESA,
+    ESPANHOLA;
 
 }
