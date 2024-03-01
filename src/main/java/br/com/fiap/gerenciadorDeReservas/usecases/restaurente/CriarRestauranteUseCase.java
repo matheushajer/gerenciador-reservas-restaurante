@@ -17,7 +17,6 @@ public class CriarRestauranteUseCase {
 
     @Autowired
     RestauranteRepository restauranteRepository;
-
     @Autowired
     RestauranteAdapter restauranteAdapter;
 
