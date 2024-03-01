@@ -12,11 +12,11 @@ import java.util.List;
 
 /**
  * Classe para representar o caso de uso da busca de
- * restaurantes por nome.
+ * restaurantes pela culinaria.
  */
 @Service
 @Transactional(readOnly = true)
-public class BuscarRestaurantePorNomeUseCase {
+public class BuscarRestaurantePorCulinariaUseCase {
 
     @Autowired
     RestauranteAdapter restauranteAdapter;
@@ -24,16 +24,16 @@ public class BuscarRestaurantePorNomeUseCase {
     RestauranteRepository restauranteRepository;
 
     /**
-     * Método para buscar uma lista de RestauranteEntity pelo nome
+     * Método para buscar uma lista de RestauranteEntity pela culinaria
      * do restaurante.
      *
-     * @param nomeRestaurante String com o parametro que será usado na busca.
+     * @param culinariaRestaurante String com o parametro que será usado na busca.
      * @return Lista de DadosConsultaRestauranteDTO com os resultados da busca.
      */
-    public List<DadosConsultaRestauranteDTO> buscarRestaurantesPorNome(String nomeRestaurante) {
+    public List<DadosConsultaRestauranteDTO> buscarRestaurantesPorCulinaria(String culinariaRestaurante) {
 
-        List<RestauranteEntity> restauranteEntity = restauranteRepository.findByNomeContainingIgnoreCase(
-                nomeRestaurante);
+        List<RestauranteEntity> restauranteEntity = restauranteRepository.findByTipoCulinariaContainingIgnoreCase(
+                culinariaRestaurante);
 
         return restauranteAdapter.converterEntityParaDadosConsultaRestauranteDTO(restauranteEntity);
 
