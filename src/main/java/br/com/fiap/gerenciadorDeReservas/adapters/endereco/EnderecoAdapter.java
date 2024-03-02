@@ -14,10 +14,10 @@ public class EnderecoAdapter {
 
 
     /**
-     * Método para converter os dados vindo da API para um EnderecoEntity
+     * Método para converter os dados vindo da API para um EnderecoEntity.
      *
-     * @param dadosCriacaoEnderecoDTO
-     * @return EnderecoEntity
+     * @param dadosCriacaoEnderecoDTO Objeto DadosCriacaoEnderecoDTO a ser convertido.
+     * @return Objeto EnderecoEntity resultante da conversão.
      */
     public EnderecoEntity conveterParaEntity(DadosCriacaoEnderecoDTO dadosCriacaoEnderecoDTO,
                                              RestauranteEntity restauranteEntity) {
@@ -37,10 +37,10 @@ public class EnderecoAdapter {
 
     /**
      * Método, para efetuar a conversão, de um EnderecoEntity, para um
-     * DadosCriacaoEnderecoDTO
+     * DadosCriacaoEnderecoDTO.
      *
-     * @param enderecoEntity
-     * @return DadosCriacaoEnderecoDTO
+     * @param enderecoEntity Objeto EnderecoEntity a ser convertido.
+     * @return Objeto DadosCriacaoEnderecoDTO resultante da conversão.
      */
     public DadosCriacaoEnderecoDTO converterParaDTO(EnderecoEntity enderecoEntity) {
 
@@ -54,8 +54,6 @@ public class EnderecoAdapter {
                 enderecoEntity.getUf()
         );
 
-
     }
-
 
 }

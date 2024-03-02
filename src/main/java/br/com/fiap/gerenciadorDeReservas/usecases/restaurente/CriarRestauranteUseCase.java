@@ -21,10 +21,10 @@ public class CriarRestauranteUseCase {
     RestauranteAdapter restauranteAdapter;
 
     /**
-     * Método para efetuar a criação de uma entity RestauranteEntity e gravar no banco
+     * Método para efetuar a criação de uma entity RestauranteEntity e gravar no banco.
      *
-     * @param dadosCriacaoRestauranteDTO
-     * @return
+     * @param dadosCriacaoRestauranteDTO Objeto DadosCriacaoRestauranteDTO com os dados de criação do RestauranteEntity.
+     * @return Objeto DadosCriacaoRestauranteDTO com os dados gravados.
      */
     public DadosCriacaoRestauranteDTO criarRestaurante(DadosCriacaoRestauranteDTO dadosCriacaoRestauranteDTO) {
 
