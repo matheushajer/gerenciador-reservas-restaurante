@@ -19,7 +19,7 @@ public class EnderecoAdapterTest {
      * Método para testar o método EnderecoAdapter#converterParaEntity
      */
     @Test
-    public void testConverterParaEntity() {
+    public void deveConverterParaEntity() {
 
         // Mock da classe DadosCriacaoEnderecoDTO
         DadosCriacaoEnderecoDTO dadosCriacaoEnderecoDTO = new DadosCriacaoEnderecoDTO(
@@ -56,7 +56,7 @@ public class EnderecoAdapterTest {
      * Método para testar o método EnderecoAdapter#converterParaDTO
      */
     @Test
-    public void testConverterParaDTO() {
+    public void deveConverterParaDTO() {
 
         // Mock da classe EnderecoEntity
         EnderecoEntity enderecoEntityMock = mock(EnderecoEntity.class);

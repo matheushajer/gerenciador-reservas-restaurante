@@ -37,7 +37,7 @@ public class RestauranteAdapterTest {
      * Método para testar o método RestauranteAdapter#converterParaEntity
      */
     @Test
-    public void testConverterParaEntity() {
+    public void deveConverterParaEntity() {
 
         // Mock da classe DadosCriacaoRestauranteDTO
         DadosCriacaoRestauranteDTO dadosCriacaoRestauranteDTO = new DadosCriacaoRestauranteDTO(
@@ -78,7 +78,7 @@ public class RestauranteAdapterTest {
      * Método para testar o método RestauranteAdapter#converterParaDTO
      */
     @Test
-    public void testConverterParaDTO() {
+    public void deveConverterParaDTO() {
 
         // Mock dados RestauranteEntity
         RestauranteEntity restauranteEntityMock = new RestauranteEntity(
@@ -118,7 +118,7 @@ public class RestauranteAdapterTest {
     }
 
     @Test
-    public void testConverterEntityParaDadosConsultaRestauranteDTO() {
+    public void deveConverterEntityParaDadosConsultaRestauranteDTO() {
 
         List<RestauranteEntity> restauranteEntityList = new ArrayList<>();
 
@@ -156,10 +156,7 @@ public class RestauranteAdapterTest {
 
 
         when(enderecoAdapter.converterParaDTO(any())).thenReturn(enderecoDtoMock);
-
-
         restauranteEntityList.add(restauranteEntityMock1);
-
         restauranteEntityList.add(restauranteEntityMock2);
 
         // Chama o método que será testado
