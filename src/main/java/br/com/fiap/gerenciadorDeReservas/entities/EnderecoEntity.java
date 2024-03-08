@@ -1,17 +1,31 @@
 package br.com.fiap.gerenciadorDeReservas.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 
 /**
  * Classe para representar a Entidade Endereco
  */
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "tb_endereco")
 public class EnderecoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinColumn(name = "endereco_id")
+    private EnderecoEntity enderecoEntity;
+
+    @OneToOne
+    @JoinColumn(name = "cliente_id")
+    private ClienteEntity clienteEntity;
+
+    @ManyToOne
+    @JoinColumn(name = "telefone_id")
+    private TelefoneEntity telefone;
     private String cep;
     private String logradouro;
     private String numero;

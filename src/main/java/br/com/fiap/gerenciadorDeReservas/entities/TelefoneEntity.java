@@ -1,11 +1,13 @@
 package br.com.fiap.gerenciadorDeReservas.entities;
 
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 
 /**
  * Classe para representar a Entidade Telefone
  */
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "tb_telefone")
 public class TelefoneEntity {
 

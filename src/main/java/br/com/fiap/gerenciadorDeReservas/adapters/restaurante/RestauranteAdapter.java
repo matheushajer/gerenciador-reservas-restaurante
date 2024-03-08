@@ -63,6 +63,7 @@ public class RestauranteAdapter {
 
     }
 
+
     /**
      * Método para converter um RestauranteEntity para objeto do tipo
      * DadosConsultaRestauranteDTO.

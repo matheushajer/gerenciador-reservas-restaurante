@@ -1,6 +1,7 @@
 package br.com.fiap.gerenciadorDeReservas.entities;
 
 import br.com.fiap.gerenciadorDeReservas.entities.enuns.TipoCulinariaEnum;
+import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 
 import java.time.LocalDate;
@@ -11,6 +12,7 @@ import java.util.List;
  * Classe para representar a Entidade Restaurante
  */
 @Entity
+@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "tb_restaurante")
 public class RestauranteEntity {
 
