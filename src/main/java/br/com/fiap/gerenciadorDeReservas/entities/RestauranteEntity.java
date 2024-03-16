@@ -25,7 +25,6 @@ public class RestauranteEntity {
     private String nome;
 
     @OneToOne(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-
     private EnderecoEntity enderecoEntity;
 
     @Enumerated(EnumType.STRING)

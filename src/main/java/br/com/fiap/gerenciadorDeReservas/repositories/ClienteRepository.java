@@ -9,5 +9,5 @@ import org.springframework.data.repository.query.Param;
 import java.util.List;
 
 public interface ClienteRepository extends JpaRepository<ClienteEntity, Long> {
-    ClienteEntity findByCpf(Long cpf);
+   // ClienteEntity findByCpf(Long cpf);
 }

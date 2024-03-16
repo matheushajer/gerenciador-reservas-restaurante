@@ -29,10 +29,6 @@ public class EnderecoEntity {
     @JoinColumn(name = "restaurante_id")
     private RestauranteEntity restauranteEntity;
 
-    @OneToOne
-    @JoinColumn(name = "cliente_id")
-    private ClienteEntity clienteEntity;
-
     // **************
     // Construtores
     // **************

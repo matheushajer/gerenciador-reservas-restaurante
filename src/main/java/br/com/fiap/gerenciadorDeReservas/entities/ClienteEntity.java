@@ -1,35 +1,43 @@
 package br.com.fiap.gerenciadorDeReservas.entities;
 
-import br.com.fiap.gerenciadorDeReservas.entities.enuns.TipoCulinariaEnum;
-import com.fasterxml.jackson.annotation.JsonGetter;
-import com.fasterxml.jackson.annotation.JsonSetter;
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-import java.time.LocalDate;
-import java.time.LocalTime;
 import java.util.List;
 
 /**
  * Classe para representar a Entidade Restaurante
  */
 @Entity
-@Getter
-@Setter
+@Data
 @Table(name = "tb_cliente")
 public class ClienteEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String nome;
-    private Long cpf;
-    @OneToOne(mappedBy = "clienteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private EnderecoEntity endereco;
 
-    @ManyToOne
-    @JoinColumn(name = "telefone_id")
+    private String nome;
+    private String cpf;
+    private String email;
+
+    @OneToOne(mappedBy = "clienteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private TelefoneEntity telefone;
+
+    @OneToMany(mappedBy = "clienteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ReservaEntity> reservaEntity;
+
+    // **************
+    // Construtores
+    // **************
+
+    public ClienteEntity() {
+    }
+
+    public ClienteEntity(String nome, String cpf, String email) {
+        this.nome = nome;
+        this.cpf = cpf;
+        this.email = email;
+    }
 
 }

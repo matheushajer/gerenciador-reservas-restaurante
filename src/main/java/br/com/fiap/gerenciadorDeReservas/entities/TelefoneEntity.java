@@ -16,12 +16,11 @@ public class TelefoneEntity {
     private Long id;
     private int ddi;
     private int ddd;
-    private int telefone;
-    private boolean isTelefonePrincipal;
+    private int numero;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "restaurante_id")
-    private RestauranteEntity restauranteEntity;
+    private ClienteEntity clienteEntity;
 
     // **************
     // Construtores
@@ -30,14 +29,10 @@ public class TelefoneEntity {
     public TelefoneEntity() {
     }
 
-    public TelefoneEntity(Long id, int ddi, int ddd, int telefone, boolean isTelefonePrincipal,
-                          RestauranteEntity restauranteEntity) {
-        this.id = id;
+    public TelefoneEntity(int ddi, int ddd, int telefone, ClienteEntity clienteEntity) {
         this.ddi = ddi;
         this.ddd = ddd;
-        this.telefone = telefone;
-        this.isTelefonePrincipal = isTelefonePrincipal;
-        this.restauranteEntity = restauranteEntity;
+        this.numero = telefone;
     }
 
     // *****************
@@ -56,15 +51,12 @@ public class TelefoneEntity {
         return ddd;
     }
 
-    public int getTelefone() {
-        return telefone;
+    public int getNumero() {
+        return numero;
     }
 
-    public boolean isTelefonePrincipal() {
-        return isTelefonePrincipal;
+    public ClienteEntity getClienteEntity() {
+        return clienteEntity;
     }
 
-    public RestauranteEntity getRestauranteEntity() {
-        return restauranteEntity;
-    }
 }

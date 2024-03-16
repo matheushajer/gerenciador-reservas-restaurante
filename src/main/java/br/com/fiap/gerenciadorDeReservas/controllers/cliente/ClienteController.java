@@ -4,7 +4,11 @@ import br.com.fiap.gerenciadorDeReservas.records.cliente.DadosCriacaoClienteDTO;
 import br.com.fiap.gerenciadorDeReservas.usecases.cliente.CriarClienteUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 /**
  * Classe Controller das operações do Restaurante
@@ -18,7 +22,7 @@ public class ClienteController {
 
     @PostMapping("/criar-cliente")
     public ResponseEntity<DadosCriacaoClienteDTO> criarRestaurante(
-            @RequestBody DadosCriacaoClienteDTO dadosCriacaoClienteDTO) {
+            @RequestBody @Validated DadosCriacaoClienteDTO dadosCriacaoClienteDTO) {
 
         return ResponseEntity.ok(criarClienteUseCase.criarCliente(dadosCriacaoClienteDTO));
 

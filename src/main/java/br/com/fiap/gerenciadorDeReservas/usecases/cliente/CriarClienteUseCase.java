@@ -1,5 +1,6 @@
 package br.com.fiap.gerenciadorDeReservas.usecases.cliente;
 
+import br.com.fiap.gerenciadorDeReservas.adapters.cliente.ClienteAdapter;
 import br.com.fiap.gerenciadorDeReservas.entities.ClienteEntity;
 import br.com.fiap.gerenciadorDeReservas.records.cliente.DadosCriacaoClienteDTO;
 import br.com.fiap.gerenciadorDeReservas.repositories.ClienteRepository;
@@ -16,23 +17,22 @@ public class CriarClienteUseCase {
 
     @Autowired
     ClienteRepository clienteRepository;
+    @Autowired
+    ClienteAdapter clienteAdapter;
 
     /**
-     * Método para efetuar a criação de uma entity RestauranteEntity e gravar no banco.
+     * Método para efetuar a criação de uma entity ClienteEntity e gravar no banco.
      *
-     * @param dadosCriacaoClienteDTO Objeto DadosCriacaoRestauranteDTO com os dados de criação do RestauranteEntity.
-     * @return Objeto DadosCriacaoRestauranteDTO com os dados gravados.
+     * @param dadosCriacaoClienteDTO Objeto DadosCriacaoClienteDTO com os dados de criação do ClienteEntity.
+     * @return Objeto DadosCriacaoClienteDTO com os dados gravados.
      */
     public DadosCriacaoClienteDTO criarCliente(DadosCriacaoClienteDTO dadosCriacaoClienteDTO) {
 
-        ClienteEntity clienteEntity = new ClienteEntity();
-        clienteEntity.setEndereco(dadosCriacaoClienteDTO.cliente().getEndereco());
-        clienteEntity.setNome(dadosCriacaoClienteDTO.cliente().getNome());
-        clienteEntity.setTelefone(dadosCriacaoClienteDTO.cliente().getTelefone());
-        clienteEntity.setCpf(dadosCriacaoClienteDTO.cliente().getCpf());
-        ClienteEntity clienteSalvo = clienteRepository.save(clienteEntity);
-        dadosCriacaoClienteDTO.cliente().setId(clienteSalvo.getId());
-        return dadosCriacaoClienteDTO;
+        ClienteEntity clienteEntity = clienteAdapter.converterParaEntity(dadosCriacaoClienteDTO);
+
+        clienteRepository.save(clienteEntity);
+
+        return clienteAdapter.converterParaDTO(clienteEntity);
 
     }
 

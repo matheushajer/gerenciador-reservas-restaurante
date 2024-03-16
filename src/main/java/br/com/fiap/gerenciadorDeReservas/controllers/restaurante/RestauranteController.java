@@ -24,8 +24,6 @@ public class RestauranteController {
     BuscarRestaurantePorCidadeUseCase buscarRestaurantePorCidadeUseCase;
     @Autowired
     BuscarRestaurantePorCulinariaUseCase buscarRestaurantePorCulinariaUseCase;
-    @Autowired
-    ReservaRestauranteUseCase reservaRestauranteUseCase;
 
     @GetMapping
     public ResponseEntity<List<DadosConsultaRestauranteDTO>> buscarRestaurantesPorNome(
@@ -70,20 +68,20 @@ public class RestauranteController {
         return ResponseEntity.ok(criarRestauranteUseCase.criarRestaurante(dadosCriacaoRestauranteDTO));
 
     }
-
-    @PostMapping("/criar-reserva")
-    public ResponseEntity<?> criarReserva(@RequestBody DadosReservaRestauranteDTO dadosReservaRestauranteDTO) {
-        return reservaRestauranteUseCase.reservaRestaurante(dadosReservaRestauranteDTO);
-    }
-
-    @PostMapping("/fechar-reserva")
-    public ResponseEntity<?> fecharReserva(@RequestBody DadosFecharReservaRestauranteDTO dadosFecharReservaRestauranteDTO) {
-        return reservaRestauranteUseCase.fecharReservaRestaurante(dadosFecharReservaRestauranteDTO);
-    }
-
-    @GetMapping("/listar-reserva")
-    public ResponseEntity<?> listaReserva(@RequestBody DadosListaReservaRestauranteDTO listaReservaRestauranteDTO) {
-        return reservaRestauranteUseCase.listaReservaRestaurante(listaReservaRestauranteDTO);
-    }
+//
+//    @PostMapping("/criar-reserva")
+//    public ResponseEntity<?> criarReserva(@RequestBody DadosReservaRestauranteDTO dadosReservaRestauranteDTO) {
+//        return reservaRestauranteUseCase.reservaRestaurante(dadosReservaRestauranteDTO);
+//    }
+//
+//    @PostMapping("/fechar-reserva")
+//    public ResponseEntity<?> fecharReserva(@RequestBody DadosFecharReservaRestauranteDTO dadosFecharReservaRestauranteDTO) {
+//        return reservaRestauranteUseCase.fecharReservaRestaurante(dadosFecharReservaRestauranteDTO);
+//    }
+//
+//    @GetMapping("/listar-reserva")
+//    public ResponseEntity<?> listaReserva(@RequestBody DadosListaReservaRestauranteDTO listaReservaRestauranteDTO) {
+//        return reservaRestauranteUseCase.listaReservaRestaurante(listaReservaRestauranteDTO);
+//    }
 
 }
