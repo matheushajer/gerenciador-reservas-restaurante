@@ -21,15 +21,21 @@ public class RestauranteEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     @OneToOne(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+
     private EnderecoEntity enderecoEntity;
+
     @Enumerated(EnumType.STRING)
     private TipoCulinariaEnum tipoCulinaria;
+
     private Integer capacidade;
     private LocalTime horarioDeAbertura;
     private LocalTime horarioDeFechamento;
     private List<LocalDate> diasDeOperacao;
+
     @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<AvaliacaoEntity> avaliacoes;
 

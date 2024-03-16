@@ -4,6 +4,7 @@ import br.com.fiap.gerenciadorDeReservas.records.restaurante.*;
 import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -64,7 +65,7 @@ public class RestauranteController {
 
     @PostMapping("/criar-restaurante")
     public ResponseEntity<DadosCriacaoRestauranteDTO> criarRestaurante(
-            @RequestBody DadosCriacaoRestauranteDTO dadosCriacaoRestauranteDTO) {
+            @RequestBody @Validated DadosCriacaoRestauranteDTO dadosCriacaoRestauranteDTO) {
 
         return ResponseEntity.ok(criarRestauranteUseCase.criarRestaurante(dadosCriacaoRestauranteDTO));
 
