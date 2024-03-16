@@ -5,8 +5,9 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.Data;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -33,7 +34,7 @@ public class RestauranteEntity {
     private Integer capacidade;
     private LocalTime horarioDeAbertura;
     private LocalTime horarioDeFechamento;
-    private List<LocalDate> diasDeOperacao;
+    private List<LocalDateTime> diasDeOperacao = new ArrayList<>();
 
     @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<AvaliacaoEntity> avaliacoes;
@@ -55,4 +56,22 @@ public class RestauranteEntity {
 
     }
 
+    public void setDiasDeOperacao() {
+
+        LocalDateTime dataAtual = LocalDateTime.now().with(horarioDeAbertura);
+        LocalDateTime dataFinal = dataAtual.plusMonths(3).withHour(horarioDeFechamento.getHour());
+
+        while (dataAtual.isBefore(dataFinal)) {
+
+            diasDeOperacao.add(dataAtual);
+
+            dataAtual = dataAtual.plusHours(1);
+
+            if (dataAtual.toLocalTime().equals(LocalTime.MIDNIGHT)) {
+                dataAtual = dataAtual.with(horarioDeAbertura);
+            }
+
+        }
+
+    }
 }

@@ -39,6 +39,10 @@ public class RestauranteAdapter {
         restauranteEntity.setEnderecoEntity(enderecoAdapter.conveterParaEntity(dadosCriacaoRestauranteDTO.endereco(),
                 restauranteEntity));
 
+        restauranteEntity.setDiasDeOperacao();
+
+        System.out.println(restauranteEntity.getDiasDeOperacao());
+
         return restauranteEntity;
 
     }
