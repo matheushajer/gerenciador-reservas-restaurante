@@ -1,4 +1,4 @@
-package br.com.fiap.gerenciadorDeReservas.adaptersTest.endereco;
+package br.com.fiap.gerenciadorDeReservas.adapters.endereco;
 
 import br.com.fiap.gerenciadorDeReservas.adapters.endereco.EnderecoAdapter;
 import br.com.fiap.gerenciadorDeReservas.entities.EnderecoEntity;

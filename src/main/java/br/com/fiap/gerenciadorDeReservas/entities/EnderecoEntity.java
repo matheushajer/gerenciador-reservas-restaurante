@@ -15,17 +15,10 @@ public class EnderecoEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @OneToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name = "endereco_id")
-    private EnderecoEntity enderecoEntity;
-
     @OneToOne
     @JoinColumn(name = "cliente_id")
     private ClienteEntity clienteEntity;
 
-    @ManyToOne
-    @JoinColumn(name = "telefone_id")
-    private TelefoneEntity telefone;
     private String cep;
     private String logradouro;
     private String numero;

@@ -54,7 +54,7 @@ public class RestauranteAdapter {
 
         return new DadosCriacaoRestauranteDTO(
                 restauranteEntity.getNome(),
-                enderecoAdapter.converterParaDTO(restauranteEntity.getEndereco()),
+                enderecoAdapter.converterParaDTO(restauranteEntity.getEnderecoEntity()),
                 restauranteEntity.getTipoCulinaria(),
                 restauranteEntity.getHorarioDeAbertura(),
                 restauranteEntity.getHorarioDeFechamento(),
@@ -79,7 +79,7 @@ public class RestauranteAdapter {
         for (RestauranteEntity restaurante : restauranteEntity) {
             DadosConsultaRestauranteDTO dadosRestaurante = new DadosConsultaRestauranteDTO(
                     restaurante.getNome(),
-                    enderecoAdapter.converterParaDTO(restaurante.getEndereco()),
+                    enderecoAdapter.converterParaDTO(restaurante.getEnderecoEntity()),
                     restaurante.getTipoCulinaria(),
                     restaurante.getHorarioDeAbertura(),
                     restaurante.getHorarioDeFechamento()

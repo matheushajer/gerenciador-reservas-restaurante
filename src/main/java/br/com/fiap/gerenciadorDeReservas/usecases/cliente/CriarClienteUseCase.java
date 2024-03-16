@@ -1,12 +1,8 @@
-package br.com.fiap.gerenciadorDeReservas.usecases.restaurente;
+package br.com.fiap.gerenciadorDeReservas.usecases.cliente;
 
-import br.com.fiap.gerenciadorDeReservas.adapters.restaurante.RestauranteAdapter;
 import br.com.fiap.gerenciadorDeReservas.entities.ClienteEntity;
-import br.com.fiap.gerenciadorDeReservas.entities.RestauranteEntity;
 import br.com.fiap.gerenciadorDeReservas.records.cliente.DadosCriacaoClienteDTO;
-import br.com.fiap.gerenciadorDeReservas.records.restaurante.DadosCriacaoRestauranteDTO;
 import br.com.fiap.gerenciadorDeReservas.repositories.ClienteRepository;
-import br.com.fiap.gerenciadorDeReservas.repositories.RestauranteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

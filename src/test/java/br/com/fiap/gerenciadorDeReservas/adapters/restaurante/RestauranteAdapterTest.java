@@ -1,4 +1,4 @@
-package br.com.fiap.gerenciadorDeReservas.adaptersTest.restaurante;
+package br.com.fiap.gerenciadorDeReservas.adapters.restaurante;
 
 import br.com.fiap.gerenciadorDeReservas.adapters.endereco.EnderecoAdapter;
 import br.com.fiap.gerenciadorDeReservas.adapters.restaurante.RestauranteAdapter;
@@ -8,6 +8,7 @@ import br.com.fiap.gerenciadorDeReservas.entities.enuns.TipoCulinariaEnum;
 import br.com.fiap.gerenciadorDeReservas.records.endereco.DadosCriacaoEnderecoDTO;
 import br.com.fiap.gerenciadorDeReservas.records.restaurante.DadosConsultaRestauranteDTO;
 import br.com.fiap.gerenciadorDeReservas.records.restaurante.DadosCriacaoRestauranteDTO;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -37,85 +38,82 @@ public class RestauranteAdapterTest {
      * Método para testar o método RestauranteAdapter#converterParaEntity
      */
     @Test
-    public void deveConverterParaEntity() {
+    void deveConverterParaEntity() {
 
-        // Mock da classe DadosCriacaoRestauranteDTO
-        DadosCriacaoRestauranteDTO dadosCriacaoRestauranteDTO = new DadosCriacaoRestauranteDTO(
-                "Restaurante Test",
-                new DadosCriacaoEnderecoDTO(
-                        "12345-678",
-                        "Rua Test",
-                        "123",
-                        "Complemento Test",
-                        "Bairro Test",
-                        "Cidade Test",
-                        "UF Test"
-                ),
-                TipoCulinariaEnum.JAPONESA,
-                LocalTime.of(17, 0, 0),
-                LocalTime.of(23, 0, 0),
-                5
+        // Mockando o comportamento do enderecoAdapter
+        when(enderecoAdapter.conveterParaEntity(any(), any())).thenReturn(
+                new EnderecoEntity(
+                        "cep", "logradouro", "numero", "complemento", "bairro",
+                        "cidade", "uf", new RestauranteEntity(
+                        "nome", TipoCulinariaEnum.JAPONESA,
+                        LocalTime.of(12, 20, 23), LocalTime.of(12, 20, 23),
+                        0)
+                )
         );
 
-        // Mock EnderecoEntity
-        EnderecoEntity enderecoEntityMock = new EnderecoEntity();
-        when(enderecoAdapter.conveterParaEntity(any(), any())).thenReturn(enderecoEntityMock);
+        // Criando um objeto de exemplo DadosCriacaoRestauranteDTO
+        DadosCriacaoRestauranteDTO restauranteDTO = new DadosCriacaoRestauranteDTO(
+                "nome",
+                new DadosCriacaoEnderecoDTO(
+                        "cep", "logradouro", "numero", "complemento", "bairro",
+                        "cidade", "uf"),
+                TipoCulinariaEnum.JAPONESA,
+                LocalTime.of(12, 20, 23), LocalTime.of(12, 20, 23),
+                0
+        );
 
-        // Chama o método que será testado
-        RestauranteEntity resultado = restauranteAdapter.converterParaEntity(dadosCriacaoRestauranteDTO);
+        // Convertendo o DadosCriacaoRestauranteDTO para RestauranteEntity usando o restauranteAdapter
+        RestauranteEntity result = restauranteAdapter.converterParaEntity(restauranteDTO);
 
-        // Verificação dos resultados esperados
-        assertEquals("Restaurante Test", resultado.getNome());
-        assertEquals(TipoCulinariaEnum.JAPONESA, resultado.getTipoCulinaria());
-        assertEquals(LocalTime.of(17, 0, 0), resultado.getHorarioDeAbertura());
-        assertEquals(LocalTime.of(23, 0, 0), resultado.getHorarioDeFechamento());
-        assertEquals(5, resultado.getCapacidade());
-        assertEquals(enderecoEntityMock, resultado.getEndereco());
+        // Verificando se a conversão foi feita corretamente
+        RestauranteEntity expectedResult = new RestauranteEntity(
+                "nome", TipoCulinariaEnum.JAPONESA,
+                LocalTime.of(12, 20, 23), LocalTime.of(12, 20, 23), 0
+        );
 
+        // Comparando os valores esperados com os valores obtidos
+        assertEquals(expectedResult.getNome(), result.getNome());
+        assertEquals(enderecoAdapter.conveterParaEntity(any(), any()), result.getEnderecoEntity());
+        assertEquals(expectedResult.getTipoCulinaria(), result.getTipoCulinaria());
+        assertEquals(expectedResult.getHorarioDeAbertura(), result.getHorarioDeAbertura());
+        assertEquals(expectedResult.getHorarioDeFechamento(), result.getHorarioDeFechamento());
+        assertEquals(expectedResult.getCapacidade(), result.getCapacidade());
     }
+
 
     /**
      * Método para testar o método RestauranteAdapter#converterParaDTO
      */
     @Test
-    public void deveConverterParaDTO() {
+    void deveConverterParaDTO() {
 
-        // Mock dados RestauranteEntity
-        RestauranteEntity restauranteEntityMock = new RestauranteEntity(
-                "Restaurante Test",
+        // Mockando o comportamento do endereçoAdapter
+        when(enderecoAdapter.converterParaDTO(any())).thenReturn(
+                new DadosCriacaoEnderecoDTO(
+                        "cep", "logradouro", "numero", "complemento",
+                        "bairro", "cidade", "uf"));
+
+        // Criando um restauranteEntity
+        RestauranteEntity restauranteEntity = new RestauranteEntity(
+                "nome", TipoCulinariaEnum.JAPONESA,
+                LocalTime.of(12, 20, 23), LocalTime.of(12, 20, 23), 0);
+
+        // Convertendo o restauranteEntity para DadosCriacaoRestauranteDTO usando o restauranteAdapter
+        DadosCriacaoRestauranteDTO result = restauranteAdapter.converterParaDTO(restauranteEntity);
+
+        // Verificando se a conversão foi feita corretamente
+        DadosCriacaoRestauranteDTO expectedResult = new DadosCriacaoRestauranteDTO(
+                "nome",
+                new DadosCriacaoEnderecoDTO(
+                        "cep", "logradouro", "numero", "complemento", "bairro",
+                        "cidade", "uf"),
                 TipoCulinariaEnum.JAPONESA,
-                LocalTime.of(17, 0, 0),
-                LocalTime.of(23, 0, 0),
-                5
-        );
+                LocalTime.of(12, 20, 23), LocalTime.of(12, 20, 23),
+                0);
 
-        // Mock dados DadosCriacaoEnderecoDTO
-        DadosCriacaoEnderecoDTO enderecoDtoMock = new DadosCriacaoEnderecoDTO(
-                "12345-678",
-                "Rua Test",
-                "123",
-                "Complemento Test",
-                "Bairro Test",
-                "Cidade Test",
-                "UF Test"
-        );
-
-        when(enderecoAdapter.converterParaDTO(any())).thenReturn(enderecoDtoMock);
-        restauranteEntityMock.setEnderecoEntity(enderecoAdapter.conveterParaEntity(
-                enderecoDtoMock, restauranteEntityMock));
-
-        // Chama o método que será testado
-        DadosCriacaoRestauranteDTO resultado = restauranteAdapter.converterParaDTO(restauranteEntityMock);
-
-        // Verificação dos resultados
-        assertEquals("Restaurante Test", resultado.nome());
-        assertEquals(TipoCulinariaEnum.JAPONESA, resultado.tipoCulinaria());
-        assertEquals(LocalTime.of(17, 0, 0), resultado.horarioDeAbertura());
-        assertEquals(LocalTime.of(23, 0, 0), resultado.horarioDeFechamento());
-        assertEquals(5, resultado.capacidade());
-        assertEquals(enderecoDtoMock, resultado.endereco());
-
+        Assertions.assertEquals(expectedResult, result);
     }
+
 
     @Test
     public void deveConverterEntityParaDadosConsultaRestauranteDTO() {

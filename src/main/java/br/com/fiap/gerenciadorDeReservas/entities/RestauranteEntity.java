@@ -3,6 +3,7 @@ package br.com.fiap.gerenciadorDeReservas.entities;
 import br.com.fiap.gerenciadorDeReservas.entities.enuns.TipoCulinariaEnum;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -12,6 +13,7 @@ import java.util.List;
  * Classe para representar a Entidade Restaurante
  */
 @Entity
+@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "tb_restaurante")
 public class RestauranteEntity {
@@ -35,9 +37,6 @@ public class RestauranteEntity {
     // Construtores
     // **************
 
-    public RestauranteEntity() {
-    }
-
     public RestauranteEntity(String nome, TipoCulinariaEnum tipoCulinaria,
                              LocalTime horarioDeAbertura, LocalTime horarioDeFechamento, Integer capacidade) {
         this.nome = nome;
@@ -46,50 +45,6 @@ public class RestauranteEntity {
         this.horarioDeFechamento = horarioDeFechamento;
         this.capacidade = capacidade;
 
-    }
-
-    // *****************
-    //  Getter e Setter
-    // *****************
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public EnderecoEntity getEndereco() {
-        return enderecoEntity;
-    }
-
-    public void setEnderecoEntity(EnderecoEntity enderecoEntity) {
-        this.enderecoEntity = enderecoEntity;
-    }
-
-    public TipoCulinariaEnum getTipoCulinaria() {
-        return tipoCulinaria;
-    }
-
-    public Integer getCapacidade() {
-        return capacidade;
-    }
-
-    public LocalTime getHorarioDeAbertura() {
-        return horarioDeAbertura;
-    }
-
-    public LocalTime getHorarioDeFechamento() {
-        return horarioDeFechamento;
-    }
-
-    public List<LocalDate> getDiasDeOperacao() {
-        return diasDeOperacao;
-    }
-
-    public List<AvaliacaoEntity> getAvaliacoes() {
-        return avaliacoes;
     }
 
 }

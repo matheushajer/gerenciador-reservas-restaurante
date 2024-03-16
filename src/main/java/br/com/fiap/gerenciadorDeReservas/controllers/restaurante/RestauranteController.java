@@ -1,6 +1,5 @@
 package br.com.fiap.gerenciadorDeReservas.controllers.restaurante;
 
-import br.com.fiap.gerenciadorDeReservas.entities.ReservaEntity;
 import br.com.fiap.gerenciadorDeReservas.records.restaurante.*;
 import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.*;
 import org.springframework.beans.factory.annotation.Autowired;

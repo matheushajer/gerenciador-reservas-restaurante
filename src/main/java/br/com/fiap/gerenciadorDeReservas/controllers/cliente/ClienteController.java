@@ -1,7 +1,7 @@
 package br.com.fiap.gerenciadorDeReservas.controllers.cliente;
 
 import br.com.fiap.gerenciadorDeReservas.records.cliente.DadosCriacaoClienteDTO;
-import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.*;
+import br.com.fiap.gerenciadorDeReservas.usecases.cliente.CriarClienteUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
