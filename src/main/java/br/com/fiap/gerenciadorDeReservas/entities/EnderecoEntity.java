@@ -2,11 +2,13 @@ package br.com.fiap.gerenciadorDeReservas.entities;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
+import lombok.Data;
 
 /**
  * Classe para representar a Entidade Endereco
  */
 @Entity
+@Data
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "tb_endereco")
 public class EnderecoEntity {
@@ -14,10 +16,6 @@ public class EnderecoEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
-    @OneToOne
-    @JoinColumn(name = "cliente_id")
-    private ClienteEntity clienteEntity;
 
     private String cep;
     private String logradouro;
@@ -30,6 +28,10 @@ public class EnderecoEntity {
     @OneToOne
     @JoinColumn(name = "restaurante_id")
     private RestauranteEntity restauranteEntity;
+
+    @OneToOne
+    @JoinColumn(name = "cliente_id")
+    private ClienteEntity clienteEntity;
 
     // **************
     // Construtores
@@ -58,43 +60,4 @@ public class EnderecoEntity {
         this.restauranteEntity = restauranteEntity;
     }
 
-    // *****************
-    //  Getter e Setter
-    // *****************
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getCep() {
-        return cep;
-    }
-
-    public String getLogradouro() {
-        return logradouro;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public String getComplemento() {
-        return complemento;
-    }
-
-    public String getBairro() {
-        return bairro;
-    }
-
-    public String getCidade() {
-        return cidade;
-    }
-
-    public String getUf() {
-        return uf;
-    }
-
-    public RestauranteEntity getRestauranteEntity() {
-        return restauranteEntity;
-    }
 }
