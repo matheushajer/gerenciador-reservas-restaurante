@@ -43,6 +43,9 @@ public class RestauranteEntity {
     // Construtores
     // **************
 
+    public RestauranteEntity() {
+    }
+
     public RestauranteEntity(String nome, TipoCulinariaEnum tipoCulinaria,
                              LocalTime horarioDeAbertura, LocalTime horarioDeFechamento, Integer capacidade) {
         this.nome = nome;

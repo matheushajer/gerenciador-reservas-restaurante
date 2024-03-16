@@ -32,12 +32,51 @@ class BuscarRestaurantePorCidadeUseCaseTest {
     }
 
     @Test
-    void testBuscarRestaurantesPorCidade() {
+    void deveBuscarRestaurantesPorCidade() {
 
-        when(restauranteAdapter.converterEntityParaDadosConsultaRestauranteDTO(any())).thenReturn(List.of(new DadosConsultaRestauranteDTO("nomeRestaurante", new DadosCriacaoEnderecoDTO("cep", "logradouro", "numero", "complemento", "bairro", "cidade", "uf"), TipoCulinariaEnum.JAPONESA, LocalTime.of(13, 34, 46), LocalTime.of(13, 34, 46))));
-        when(restauranteRepository.findByEnderecoEntity_CidadeContainingIgnoreCase(anyString())).thenReturn(List.of(new RestauranteEntity("nome", TipoCulinariaEnum.JAPONESA, LocalTime.of(13, 34, 46), LocalTime.of(13, 34, 46), Integer.valueOf(0))));
+        when(restauranteAdapter.converterEntityParaDadosConsultaRestauranteDTO(any())).thenReturn(List.of(
+                new DadosConsultaRestauranteDTO(
+                        "nomeRestaurante",
+                        new DadosCriacaoEnderecoDTO(
+                                "cep",
+                                "logradouro",
+                                "numero",
+                                "complemento",
+                                "bairro",
+                                "cidade",
+                                "uf"),
+                        TipoCulinariaEnum.JAPONESA,
+                        LocalTime.of(13, 34, 46),
+                        LocalTime.of(13, 34, 46))
+        ));
 
-        List<DadosConsultaRestauranteDTO> result = buscarRestaurantePorCidadeUseCase.buscarRestaurantesPorCidade("cidadeRestaurante");
-        Assertions.assertEquals(List.of(new DadosConsultaRestauranteDTO("nomeRestaurante", new DadosCriacaoEnderecoDTO("cep", "logradouro", "numero", "complemento", "bairro", "cidade", "uf"), TipoCulinariaEnum.JAPONESA, LocalTime.of(13, 34, 46), LocalTime.of(13, 34, 46))), result);
+        when(restauranteRepository.findByEnderecoEntity_CidadeContainingIgnoreCase(anyString())).thenReturn(List.of(
+                new RestauranteEntity(
+                        "nome",
+                        TipoCulinariaEnum.JAPONESA,
+                        LocalTime.of(13, 34, 46),
+                        LocalTime.of(13, 34, 46),
+                        0)
+        ));
+
+        List<DadosConsultaRestauranteDTO> result = buscarRestaurantePorCidadeUseCase.buscarRestaurantesPorCidade(
+                "cidadeRestaurante");
+
+        Assertions.assertEquals(List.of(
+                        new DadosConsultaRestauranteDTO(
+                                "nomeRestaurante",
+                                new DadosCriacaoEnderecoDTO(
+                                        "cep",
+                                        "logradouro",
+                                        "numero",
+                                        "complemento",
+                                        "bairro",
+                                        "cidade",
+                                        "uf"),
+                                TipoCulinariaEnum.JAPONESA,
+                                LocalTime.of(13, 34, 46),
+                                LocalTime.of(13, 34, 46)
+                        )),
+                result);
     }
 }
