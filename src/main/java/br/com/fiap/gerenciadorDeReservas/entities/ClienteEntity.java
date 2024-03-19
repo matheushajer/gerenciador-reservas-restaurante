@@ -22,7 +22,7 @@ public class ClienteEntity {
     private String email;
 
     @OneToOne(mappedBy = "clienteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
-    private TelefoneEntity telefone;
+    private TelefoneEntity telefoneEntity;
 
     @OneToMany(mappedBy = "clienteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<ReservaEntity> reservaEntity;

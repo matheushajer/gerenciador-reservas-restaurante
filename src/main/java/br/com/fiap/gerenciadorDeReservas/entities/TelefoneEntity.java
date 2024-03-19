@@ -1,25 +1,26 @@
 package br.com.fiap.gerenciadorDeReservas.entities;
 
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
+import lombok.Getter;
 
 /**
  * Classe para representar a Entidade Telefone
  */
+@Getter
 @Entity
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "tb_telefone")
 public class TelefoneEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private int ddi;
     private int ddd;
     private int numero;
 
     @OneToOne
-    @JoinColumn(name = "restaurante_id")
+    @JoinColumn(name = "cliente_id")
     private ClienteEntity clienteEntity;
 
     // **************
@@ -33,30 +34,7 @@ public class TelefoneEntity {
         this.ddi = ddi;
         this.ddd = ddd;
         this.numero = telefone;
-    }
-
-    // *****************
-    //  Getter e Setter
-    // *****************
-
-    public Long getId() {
-        return id;
-    }
-
-    public int getDdi() {
-        return ddi;
-    }
-
-    public int getDdd() {
-        return ddd;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
-    public ClienteEntity getClienteEntity() {
-        return clienteEntity;
+        this.clienteEntity = clienteEntity;
     }
 
 }

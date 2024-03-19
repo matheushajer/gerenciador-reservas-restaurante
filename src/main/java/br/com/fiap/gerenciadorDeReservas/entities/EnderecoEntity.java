@@ -9,7 +9,6 @@ import lombok.Data;
  */
 @Entity
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "tb_endereco")
 public class EnderecoEntity {
 

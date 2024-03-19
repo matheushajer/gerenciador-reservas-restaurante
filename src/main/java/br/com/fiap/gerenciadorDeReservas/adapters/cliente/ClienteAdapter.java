@@ -30,7 +30,7 @@ public class ClienteAdapter {
                 dadosCriacaoClienteDTO.email()
         );
 
-        clienteEntity.setTelefone(telefoneAdapter.converterParaEntity(
+        clienteEntity.setTelefoneEntity(telefoneAdapter.converterParaEntity(
                 dadosCriacaoClienteDTO.dadosCriacaoTelefoneDTO(), clienteEntity));
 
         return clienteEntity;
@@ -49,7 +49,7 @@ public class ClienteAdapter {
                 clienteEntity.getNome(),
                 clienteEntity.getCpf(),
                 clienteEntity.getEmail(),
-                telefoneAdapter.converterParaDTO(clienteEntity.getTelefone())
+                telefoneAdapter.converterParaDTO(clienteEntity.getTelefoneEntity())
         );
 
     }

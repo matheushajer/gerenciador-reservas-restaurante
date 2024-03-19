@@ -24,10 +24,6 @@ public class ReservaEntity {
     private StatusReservaEnum StatusReservaEnum;
 
     @ManyToOne
-    @JoinColumn(name = "telefone_id")
-    private TelefoneEntity telefone;
-
-    @ManyToOne
     @JoinColumn(name = "cliente_id")
     private ClienteEntity clienteEntity;
 
@@ -35,4 +31,18 @@ public class ReservaEntity {
     @JoinColumn(name = "restaurante_id")
     private RestauranteEntity restauranteEntity;
 
+    // **************
+    // Construtores
+    // **************
+
+    public ReservaEntity() {
+    }
+
+    public ReservaEntity(StatusReservaEnum statusReservaEnum, ClienteEntity clienteEntity, RestauranteEntity restauranteEntity) {
+
+        StatusReservaEnum = statusReservaEnum;
+        this.clienteEntity = clienteEntity;
+        this.restauranteEntity = restauranteEntity;
+
+    }
 }

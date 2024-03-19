@@ -1,7 +1,6 @@
 package br.com.fiap.gerenciadorDeReservas.entities;
 
 import br.com.fiap.gerenciadorDeReservas.entities.enuns.TipoCulinariaEnum;
-import com.fasterxml.jackson.annotation.JsonInclude;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -15,7 +14,6 @@ import java.util.List;
  */
 @Entity
 @Data
-@JsonInclude(JsonInclude.Include.NON_NULL)
 @Table(name = "tb_restaurante")
 public class RestauranteEntity {
 
@@ -39,6 +37,9 @@ public class RestauranteEntity {
     @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     private List<AvaliacaoEntity> avaliacoes;
 
+    @OneToMany(mappedBy = "restauranteEntity", fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    private List<ReservaEntity> reservaEntity;
+
     // **************
     // Construtores
     // **************
@@ -56,6 +57,10 @@ public class RestauranteEntity {
 
     }
 
+    /**
+     * Cria uma lista de data e hora, para os proximos três meses
+     * respeitando o horário de abertura e fechamento do restaurante.
+     */
     public void setDiasDeOperacao() {
 
         LocalDateTime dataAtual = LocalDateTime.now().with(horarioDeAbertura);
@@ -74,4 +79,6 @@ public class RestauranteEntity {
         }
 
     }
+
+
 }
