@@ -5,6 +5,7 @@ import br.com.fiap.gerenciadorDeReservas.entities.ClienteEntity;
 import br.com.fiap.gerenciadorDeReservas.entities.ReservaEntity;
 import br.com.fiap.gerenciadorDeReservas.entities.RestauranteEntity;
 import br.com.fiap.gerenciadorDeReservas.entities.enuns.StatusReservaEnum;
+import br.com.fiap.gerenciadorDeReservas.records.reserva.DadosConsultaReservasDTO;
 import br.com.fiap.gerenciadorDeReservas.records.reserva.DadosCriacaoReservaDTO;
 import br.com.fiap.gerenciadorDeReservas.records.reserva.DadosRetornoCriacaoReservaDTO;
 import br.com.fiap.gerenciadorDeReservas.repositories.ClienteRepository;
@@ -13,6 +14,9 @@ import br.com.fiap.gerenciadorDeReservas.usecases.reserva.util.ValidadorDeReserv
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Classe para efetuar tratamento dos dados vindo das APIs
@@ -80,5 +84,29 @@ public class ReservaAdapter {
         );
 
     }
+
+    /**
+     * Método para converter os dados de uma ReservaEntity para um objeto
+     * DadosConsultaReservasDTO.
+     *
+     * @param reservaEntity Objeto com os dados a serem convertidos.
+     * @return DadosConsultaReservasDTO Objeto com os dados tratados para exibição.
+     */
+    public List<DadosConsultaReservasDTO> converterParaDadosConsultaPorRestaurante(List<ReservaEntity> reservaEntity) {
+
+        List<DadosConsultaReservasDTO> dadosConsultaReservas = new ArrayList<>();
+
+        reservaEntity.forEach(reserva -> {
+            DadosConsultaReservasDTO dadosConsulta = new DadosConsultaReservasDTO(
+                    reserva.getDataReserva(),
+                    reserva.getStatusReservaEnum()
+            );
+            dadosConsultaReservas.add(dadosConsulta);
+        });
+
+        return dadosConsultaReservas;
+
+    }
+
 
 }
