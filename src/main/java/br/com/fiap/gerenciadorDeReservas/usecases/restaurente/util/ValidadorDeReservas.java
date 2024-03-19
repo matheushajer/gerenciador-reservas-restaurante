@@ -1,4 +1,4 @@
-package br.com.fiap.gerenciadorDeReservas.usecases.restaurente;
+package br.com.fiap.gerenciadorDeReservas.usecases.restaurente.util;
 
 import br.com.fiap.gerenciadorDeReservas.entities.RestauranteEntity;
 import br.com.fiap.gerenciadorDeReservas.repositories.RestauranteRepository;
@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
  */
 @Service
 @Transactional(readOnly = true)
-public class IsAgendamentoValidoUseCase {
+public class ValidadorDeReservas {
 
     @Autowired
     RestauranteRepository restauranteRepository;

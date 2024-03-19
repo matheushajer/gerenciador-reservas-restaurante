@@ -9,7 +9,7 @@ import br.com.fiap.gerenciadorDeReservas.records.reserva.DadosCriacaoReservaDTO;
 import br.com.fiap.gerenciadorDeReservas.records.reserva.DadosRetornoCriacaoReservaDTO;
 import br.com.fiap.gerenciadorDeReservas.repositories.ClienteRepository;
 import br.com.fiap.gerenciadorDeReservas.repositories.RestauranteRepository;
-import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.IsAgendamentoValidoUseCase;
+import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.util.ValidadorDeReservas;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -28,7 +28,7 @@ public class ReservaAdapter {
     @Autowired
     EnderecoAdapter enderecoAdapter;
     @Autowired
-    IsAgendamentoValidoUseCase agendamentoValidoUseCase;
+    ValidadorDeReservas agendamentoValidoUseCase;
 
     /**
      * Método para efetuar a conversão dos dados da API para criação  de uma ReservaEntity.
