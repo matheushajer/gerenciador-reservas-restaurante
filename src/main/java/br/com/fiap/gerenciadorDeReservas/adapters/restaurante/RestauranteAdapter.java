@@ -41,8 +41,6 @@ public class RestauranteAdapter {
 
         restauranteEntity.setDiasDeOperacao();
 
-        System.out.println(restauranteEntity.getDiasDeOperacao());
-
         return restauranteEntity;
 
     }

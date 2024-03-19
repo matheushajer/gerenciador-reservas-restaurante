@@ -1,4 +1,4 @@
-package br.com.fiap.gerenciadorDeReservas.usecases.restaurente.util;
+package br.com.fiap.gerenciadorDeReservas.usecases.reserva.util;
 
 import br.com.fiap.gerenciadorDeReservas.entities.RestauranteEntity;
 import br.com.fiap.gerenciadorDeReservas.repositories.RestauranteRepository;
@@ -28,6 +28,7 @@ public class ValidadorDeReservas {
     public boolean isDataAgendamentoValido(LocalDateTime dataAgendamento, RestauranteEntity restauranteEntity) {
 
         if (restauranteEntity.getDiasDeOperacao().contains(dataAgendamento) && restauranteEntity.getCapacidade() > 0) {
+
             restauranteEntity.setCapacidade(restauranteEntity.getCapacidade() - 1);
 
             restauranteRepository.atualizarCapacidade(restauranteEntity.getId(), restauranteEntity.getCapacidade());

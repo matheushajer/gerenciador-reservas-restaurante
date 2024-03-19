@@ -21,7 +21,7 @@ public class ReservaEntity {
     private LocalDateTime dataReserva;
 
     @Enumerated(EnumType.STRING)
-    private StatusReservaEnum StatusReservaEnum;
+    private StatusReservaEnum statusReservaEnum;
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
@@ -40,7 +40,7 @@ public class ReservaEntity {
 
     public ReservaEntity(StatusReservaEnum statusReservaEnum, ClienteEntity clienteEntity, RestauranteEntity restauranteEntity) {
 
-        StatusReservaEnum = statusReservaEnum;
+        this.statusReservaEnum = statusReservaEnum;
         this.clienteEntity = clienteEntity;
         this.restauranteEntity = restauranteEntity;
 

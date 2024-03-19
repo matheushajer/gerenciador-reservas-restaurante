@@ -9,7 +9,7 @@ import br.com.fiap.gerenciadorDeReservas.records.reserva.DadosCriacaoReservaDTO;
 import br.com.fiap.gerenciadorDeReservas.records.reserva.DadosRetornoCriacaoReservaDTO;
 import br.com.fiap.gerenciadorDeReservas.repositories.ClienteRepository;
 import br.com.fiap.gerenciadorDeReservas.repositories.RestauranteRepository;
-import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.util.ValidadorDeReservas;
+import br.com.fiap.gerenciadorDeReservas.usecases.reserva.util.ValidadorDeReservas;
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -56,8 +56,6 @@ public class ReservaAdapter {
 
         if (agendamentoValidoUseCase.isDataAgendamentoValido(dadosCriacaoReservaDTO.dataReserva(), restauranteEntity)) {
             reservaEntity.setDataReserva(dadosCriacaoReservaDTO.dataReserva());
-
-            System.out.println(restauranteEntity.getCapacidade());
 
         } else {
             throw new IllegalAccessException("Data indisponivel para reserva");
