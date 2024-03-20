@@ -1,20 +1,28 @@
 package br.com.fiap.gerenciadorDeReservas.entities;
 
 import jakarta.persistence.*;
+import lombok.Data;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
+/**
+ * Classe para representar as avaliações de cliente
+ * para os restaurantes.
+ */
 @Entity
+@Data
 @Table(name = "tb_avaliacao")
 public class AvaliacaoEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String autor;
     private Double nota;
     private String comentario;
-    private LocalDate dataAvaliacao;
+    private LocalDateTime dataAvaliacao;
 
     @ManyToOne
     @JoinColumn(name = "restaurante_id")
@@ -27,9 +35,9 @@ public class AvaliacaoEntity {
     public AvaliacaoEntity() {
     }
 
-    public AvaliacaoEntity(Long id, String autor, Double nota, String comentario, LocalDate dataAvaliacao,
+    public AvaliacaoEntity(String autor, Double nota, String comentario, LocalDateTime dataAvaliacao,
                            RestauranteEntity restauranteEntity) {
-        this.id = id;
+
         this.autor = autor;
         this.nota = nota;
         this.comentario = comentario;
@@ -37,31 +45,4 @@ public class AvaliacaoEntity {
         this.restauranteEntity = restauranteEntity;
     }
 
-    // *****************
-    //  Getter e Setter
-    // *****************
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getAutor() {
-        return autor;
-    }
-
-    public Double getNota() {
-        return nota;
-    }
-
-    public String getComentario() {
-        return comentario;
-    }
-
-    public LocalDate getDataAvaliacao() {
-        return dataAvaliacao;
-    }
-
-    public RestauranteEntity getRestauranteEntity() {
-        return restauranteEntity;
-    }
 }
