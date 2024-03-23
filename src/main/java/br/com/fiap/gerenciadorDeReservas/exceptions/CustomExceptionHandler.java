@@ -21,6 +21,7 @@ public class CustomExceptionHandler {
     public ResponseEntity<CustomErrorResponse> handleValidationExceptions(MethodArgumentNotValidException ex) {
 
         FieldError fieldError = ex.getFieldError();
+        assert fieldError != null;
         String campo = fieldError.getField();
         String mensagem = fieldError.getDefaultMessage();
         LocalDateTime timestamp = LocalDateTime.now();

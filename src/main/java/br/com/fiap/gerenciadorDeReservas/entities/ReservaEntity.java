@@ -38,9 +38,10 @@ public class ReservaEntity {
     public ReservaEntity() {
     }
 
-    public ReservaEntity(StatusReservaEnum statusReservaEnum, ClienteEntity clienteEntity, RestauranteEntity restauranteEntity) {
+    public ReservaEntity(StatusReservaEnum statusReservaEnum, LocalDateTime dataReserva, ClienteEntity clienteEntity, RestauranteEntity restauranteEntity) {
 
         this.statusReservaEnum = statusReservaEnum;
+        this.dataReserva = dataReserva;
         this.clienteEntity = clienteEntity;
         this.restauranteEntity = restauranteEntity;
 

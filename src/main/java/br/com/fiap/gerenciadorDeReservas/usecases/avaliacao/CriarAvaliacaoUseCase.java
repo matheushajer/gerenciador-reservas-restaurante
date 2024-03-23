@@ -1,4 +1,4 @@
-package br.com.fiap.gerenciadorDeReservas.usecases;
+package br.com.fiap.gerenciadorDeReservas.usecases.avaliacao;
 
 import br.com.fiap.gerenciadorDeReservas.adapters.avaliacao.AvaliacaoAdapter;
 import br.com.fiap.gerenciadorDeReservas.entities.AvaliacaoEntity;

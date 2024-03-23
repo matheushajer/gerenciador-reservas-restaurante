@@ -54,6 +54,7 @@ public class ReservaAdapter {
 
         ReservaEntity reservaEntity = new ReservaEntity(
                 statusReservaEnum,
+                dadosCriacaoReservaDTO.dataReserva(),
                 clienteEntity,
                 restauranteEntity
         );

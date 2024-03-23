@@ -1,12 +1,12 @@
 package br.com.fiap.gerenciadorDeReservas.entities;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.Data;
 
 /**
  * Classe para representar a Entidade Telefone
  */
-@Getter
+@Data
 @Entity
 @Table(name = "tb_telefone")
 public class TelefoneEntity {

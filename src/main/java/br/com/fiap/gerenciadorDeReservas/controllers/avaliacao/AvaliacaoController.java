@@ -2,7 +2,7 @@ package br.com.fiap.gerenciadorDeReservas.controllers.avaliacao;
 
 import br.com.fiap.gerenciadorDeReservas.records.avaliacao.DadosCriacaoAvaliacaoDTO;
 import br.com.fiap.gerenciadorDeReservas.records.avaliacao.DadosRetornoCriacaoAvaliacaoDTO;
-import br.com.fiap.gerenciadorDeReservas.usecases.CriarAvaliacaoUseCase;
+import br.com.fiap.gerenciadorDeReservas.usecases.avaliacao.CriarAvaliacaoUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;

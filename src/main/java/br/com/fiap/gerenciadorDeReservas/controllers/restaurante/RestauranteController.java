@@ -1,7 +1,11 @@
 package br.com.fiap.gerenciadorDeReservas.controllers.restaurante;
 
-import br.com.fiap.gerenciadorDeReservas.records.restaurante.*;
-import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.*;
+import br.com.fiap.gerenciadorDeReservas.records.restaurante.DadosConsultaRestauranteDTO;
+import br.com.fiap.gerenciadorDeReservas.records.restaurante.DadosCriacaoRestauranteDTO;
+import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.BuscarRestaurantePorCidadeUseCase;
+import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.BuscarRestaurantePorCulinariaUseCase;
+import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.BuscarRestaurantePorNomeUseCase;
+import br.com.fiap.gerenciadorDeReservas.usecases.restaurente.CriarRestauranteUseCase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -68,20 +72,5 @@ public class RestauranteController {
         return ResponseEntity.ok(criarRestauranteUseCase.criarRestaurante(dadosCriacaoRestauranteDTO));
 
     }
-//
-//    @PostMapping("/criar-reserva")
-//    public ResponseEntity<?> criarReserva(@RequestBody DadosReservaRestauranteDTO dadosReservaRestauranteDTO) {
-//        return reservaRestauranteUseCase.reservaRestaurante(dadosReservaRestauranteDTO);
-//    }
-//
-//    @PostMapping("/fechar-reserva")
-//    public ResponseEntity<?> fecharReserva(@RequestBody DadosFecharReservaRestauranteDTO dadosFecharReservaRestauranteDTO) {
-//        return reservaRestauranteUseCase.fecharReservaRestaurante(dadosFecharReservaRestauranteDTO);
-//    }
-//
-//    @GetMapping("/listar-reserva")
-//    public ResponseEntity<?> listaReserva(@RequestBody DadosListaReservaRestauranteDTO listaReservaRestauranteDTO) {
-//        return reservaRestauranteUseCase.listaReservaRestaurante(listaReservaRestauranteDTO);
-//    }
 
 }
