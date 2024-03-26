@@ -1,13 +1,16 @@
-FROM maven:3.8.4-openjdk-17 as build
-
+FROM maven:3.8.4-openjdk-17
 WORKDIR /app
+
+RUN git clone https://github.com/matheushajer/gerenciador-reservas-restaurante
 
 COPY . /app
 
-RUN mvn clean package -DskipTests
+WORKDIR /app/gerenciador-reservas-restaurante
 
-WORKDIR /app
+RUN mvn clean test
+
+RUN cp target/*.jar /app
 
 EXPOSE 8081
 
-CMD ["java", "-jar", "/app/target/gerenciadorDeReservas-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "/app/gerenciadorDeReservas-0.0.1-SNAPSHOT.jar"]

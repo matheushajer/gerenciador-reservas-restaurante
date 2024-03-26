@@ -81,4 +81,12 @@ public class RestauranteEntity {
     }
 
 
+    public LocalTime getHorarioFechamento() {
+    return this.horarioDeFechamento;}
+
+
+
+    public LocalTime getHorarioAbertura() {
+        return this.horarioDeAbertura;
+    }
 }
