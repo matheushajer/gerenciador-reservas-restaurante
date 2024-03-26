@@ -1,10 +1,17 @@
-FROM maven:3.8.4-openjdk-17
+FROM maven:3.8.4-openjdk-17 as build
 
-RUN mvn clean package -DskipTests
-
-# Expoe a porta 8081
-EXPOSE 8081
 WORKDIR /app
 
-# Define o comando para iniciar a API
-CMD java -jar $(ls | grep .jar)
+COPY . /app
+
+RUN mvn clean package
+
+FROM openjdk:17
+
+COPY --from=build /app/target/gerenciadorDeReservas-0.0.1-SNAPSHOT.jar /app/gerenciadorDeReservas.jar
+
+WORKDIR /app
+
+EXPOSE 8081
+
+CMD ["java", "-jar", "gerenciadorDeReservas.jar"]
