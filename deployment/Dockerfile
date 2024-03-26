@@ -7,7 +7,7 @@ COPY . /app
 
 WORKDIR /app/gerenciador-reservas-restaurante
 
-RUN mvn clean test
+RUN mvn clean test -X
 
 RUN cp target/*.jar /app
 

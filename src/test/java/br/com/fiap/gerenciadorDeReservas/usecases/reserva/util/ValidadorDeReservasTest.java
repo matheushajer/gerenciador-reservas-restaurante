@@ -40,7 +40,7 @@ class ValidadorDeReservasTest {
 
         restauranteEntity.setDiasDeOperacao();
 
-        LocalDateTime dataAgendamento = LocalDateTime.of(2024, Month.MARCH, 24, 9, 40, 35);
+        LocalDateTime dataAgendamento = LocalDateTime.of(2024, Month.MAY, 24, 9, 40, 35);
 
         boolean result = validadorDeReservas.isDataAgendamentoValido(dataAgendamento, restauranteEntity);
 
@@ -60,7 +60,7 @@ class ValidadorDeReservasTest {
 
         restauranteEntity.setDiasDeOperacao();
 
-        LocalDateTime dataAgendamento = LocalDateTime.of(2024, Month.MARCH, 24, 9, 20, 35);
+        LocalDateTime dataAgendamento = LocalDateTime.of(2024, Month.MAY, 24, 9, 20, 35);
 
         boolean result = validadorDeReservas.isDataAgendamentoValido(dataAgendamento, restauranteEntity);
 

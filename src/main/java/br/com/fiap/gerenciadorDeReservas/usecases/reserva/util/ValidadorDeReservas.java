@@ -7,7 +7,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
-import java.time.LocalTime;
 
 /**
  * Classe para validar se um agendamento é valido ou não.
@@ -27,15 +26,7 @@ public class ValidadorDeReservas {
      * @return true ou false
      */
     public boolean isDataAgendamentoValido(LocalDateTime dataAgendamento, RestauranteEntity restauranteEntity) {
-
         if (restauranteEntity.getDiasDeOperacao().contains(dataAgendamento) && restauranteEntity.getCapacidade() > 0) {
-            LocalTime horaAbertura = restauranteEntity.getHorarioAbertura();
-            LocalTime horaFechamento = restauranteEntity.getHorarioFechamento();
-            LocalTime horaAgendamento = dataAgendamento.toLocalTime();
-            if (horaAgendamento.isBefore(horaAbertura) || horaAgendamento.isAfter(horaFechamento)) {
-                return false;
-            }
-
             restauranteEntity.setCapacidade(restauranteEntity.getCapacidade() - 1);
 
             restauranteRepository.atualizarCapacidade(restauranteEntity.getId(), restauranteEntity.getCapacidade());
