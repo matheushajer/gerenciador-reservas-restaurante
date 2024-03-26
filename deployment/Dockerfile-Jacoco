@@ -1,0 +1,16 @@
+FROM maven:3.8.4-openjdk-17 AS build
+
+WORKDIR /app
+
+RUN git clone https://github.com/matheushajer/gerenciador-reservas-restaurante
+
+COPY . /app
+
+WORKDIR /app/gerenciador-reservas-restaurante
+RUN mvn clean test
+
+FROM nginx:latest
+
+COPY --from=build /app/gerenciador-reservas-restaurante/target/site/jacoco /usr/share/nginx/html
+
+EXPOSE 80

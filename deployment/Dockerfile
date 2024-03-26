@@ -6,9 +6,6 @@ RUN git clone https://github.com/matheushajer/gerenciador-reservas-restaurante
 COPY . /app
 
 WORKDIR /app/gerenciador-reservas-restaurante
-RUN mvn clean test
-RUN mkdir -p /app/src/main/resources/static/test-reports/jacoco
-RUN cp -r /app/gerenciador-reservas-restaurante/target/site/jacoco/* /app/src/main/resources/static/test-reports/jacoco/
 
 RUN mvn package
 
