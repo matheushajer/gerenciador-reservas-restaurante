@@ -1,18 +1,10 @@
-# Estágio de build
-FROM ubuntu:latest AS build
+FROM maven:3.8.4-openjdk-17
 
-RUN apt-get update && apt-get install -y openjdk-17-jdk
-WORKDIR /app
-COPY . .
+RUN mvn clean package -DskipTests
 
-RUN apt-get install -y maven
-RUN mvn clean install
-
-# Estágio de produção
-FROM openjdk:17-jdk-slim
-
+# Expoe a porta 8081
 EXPOSE 8081
+WORKDIR /app
 
-COPY --from=build /app/target/gerenciadorDeReservas-0.0.1-SNAPSHOT.jar app.jar
-
-ENTRYPOINT ["java", "-jar", "app.jar"]
+# Define o comando para iniciar a API
+CMD java -jar $(ls | grep .jar)
